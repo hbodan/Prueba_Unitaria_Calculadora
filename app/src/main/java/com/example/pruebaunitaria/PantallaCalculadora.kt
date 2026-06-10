@@ -15,20 +15,35 @@ import androidx.compose.ui.platform.testTag
 fun PantallaCalculadora() {
 
     val calculadora = Calculadora()
-    var resultado by remember { mutableStateOf("") }
+    var resultado1 by remember { mutableStateOf("") }
+    var resultado2 by remember { mutableStateOf("") }
+
 
     Column {
 
         Button(
             onClick = {
-                resultado = calculadora.sumar(5, 3).toString()
+                resultado1 = calculadora.sumar(5, 3).toString()
             }
         ) {
             Text("Calcular")
         }
 
         Text(
-            text = resultado,
+            text = resultado1,
+            modifier = Modifier.testTag("resultado")
+        )
+
+        Button(
+            onClick = {
+                resultado2 = calculadora.restar(5, 3).toString()
+            }
+        ) {
+            Text("Restar")
+        }
+
+        Text(
+            text = resultado2,
             modifier = Modifier.testTag("resultado")
         )
     }
